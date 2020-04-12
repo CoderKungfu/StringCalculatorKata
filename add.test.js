@@ -33,3 +33,14 @@ describe.each([
     expect(add(input)).toBe(output)
   })
 })
+
+// Step 4
+describe.each([
+  ["//;\n1;2"     , 3 ],
+  ["//%\n1%2%3"   , 6 ],
+  ["//%\n1%2%3\n4", 10],
+])('Special declaration for default delimiter', (input, output) => {
+  test(`Adds all the numbers up to ${output}`, () => {
+    expect(add(input)).toBe(output)
+  })
+})

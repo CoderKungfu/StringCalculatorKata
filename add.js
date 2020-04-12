@@ -1,4 +1,4 @@
-const DELIMITER = ','
+const DEFAULT_DELIMITER = ','
 
 const isValidInput = (input) => {
   if(typeof input !== 'string') return false
@@ -7,12 +7,21 @@ const isValidInput = (input) => {
   return true
 }
 
-const normalizeDelimiters = (input) => input.replace(/[\n\r]/g, DELIMITER)
+const normalizeDelimiters = (input, defaultDelimiter) => input.replace(/[\n\r]/g, defaultDelimiter)
+
+const defineDelimiter = (input) => {
+  if (input.startsWith('//')) {
+    const newDelimiter = input[2]
+    return [newDelimiter, input.slice(4)]
+  }
+  return [DEFAULT_DELIMITER, input]
+}
 
 const add = (numbers) => {
   if (!isValidInput(numbers)) return 0
 
-  const intArray = normalizeDelimiters(numbers).split(DELIMITER)
+  const [defaultDelimiter, cleanedInput] = defineDelimiter(numbers)
+  const intArray = normalizeDelimiters(cleanedInput, defaultDelimiter).split(defaultDelimiter)
   if (intArray.length === 1) return Number(intArray[0])
   
   const reducer = (accumulator, curentValue) => {
