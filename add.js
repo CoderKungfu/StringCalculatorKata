@@ -1,4 +1,3 @@
-const EXPECTED_NUMS = 2
 const DELIMITER = ','
 
 const isValidInput = (input) => {
@@ -12,9 +11,11 @@ const add = (numbers) => {
   if (!isValidInput(numbers)) return 0
 
   const intArray = numbers.split(DELIMITER)
-  if (intArray.length == EXPECTED_NUMS)
-    return Number(intArray[0]) + Number(intArray[1])
-  else
-    return Number(intArray[0])
+  if (intArray.length === 1) return Number(intArray[0])
+  
+  const reducer = (accumulator, curentValue) => {
+    return accumulator + Number(curentValue)
+  }
+  return intArray.reduce(reducer, 0)
 }
 export default add
