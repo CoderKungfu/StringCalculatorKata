@@ -10,10 +10,10 @@ const isValidInput = (input) => {
 const normalizeDelimiters = (input, defaultDelimiter) => input.replace(/[\n\r]/g, defaultDelimiter)
 
 const defineDelimiter = (input) => {
-  if (input.startsWith('//')) {
-    const firstNewLineIndex = input.indexOf("\n")
-    const newDelimiter = input.slice(2, firstNewLineIndex)
-    return [newDelimiter, input.slice(firstNewLineIndex + 1)]
+  const matches = input.match(/^\/\/(\S+)[\n\r]/)
+  if (matches) {
+    const newDelimiter = matches[1]
+    return [newDelimiter, input.slice(matches[0].length - 1)]
   }
   return [DEFAULT_DELIMITER, input]
 }
