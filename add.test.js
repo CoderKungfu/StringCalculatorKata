@@ -23,3 +23,13 @@ describe.each([
     expect(add(input)).toBe(output)
   })
 })
+
+// Step 3
+describe.each([
+  ['1\n2,3'   , 6 ],
+  ['1\n2,3\n4', 10],
+])('Take new line as delimiter', (input, output) => {
+  test(`Adds all the numbers up to ${output}`, () => {
+    expect(add(input)).toBe(output)
+  })
+})

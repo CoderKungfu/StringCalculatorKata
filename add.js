@@ -7,10 +7,12 @@ const isValidInput = (input) => {
   return true
 }
 
+const normalizeDelimiters = (input) => input.replace(/[\n\r]/g, DELIMITER)
+
 const add = (numbers) => {
   if (!isValidInput(numbers)) return 0
 
-  const intArray = numbers.split(DELIMITER)
+  const intArray = normalizeDelimiters(numbers).split(DELIMITER)
   if (intArray.length === 1) return Number(intArray[0])
   
   const reducer = (accumulator, curentValue) => {
