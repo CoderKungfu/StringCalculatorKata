@@ -11,8 +11,9 @@ const normalizeDelimiters = (input, defaultDelimiter) => input.replace(/[\n\r]/g
 
 const defineDelimiter = (input) => {
   if (input.startsWith('//')) {
-    const newDelimiter = input[2]
-    return [newDelimiter, input.slice(4)]
+    const firstNewLineIndex = input.indexOf("\n")
+    const newDelimiter = input.slice(2, firstNewLineIndex)
+    return [newDelimiter, input.slice(firstNewLineIndex + 1)]
   }
   return [DEFAULT_DELIMITER, input]
 }
