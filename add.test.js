@@ -1,21 +1,13 @@
 import add from './add'
 
-test('empty string should return 0', () => {
-  expect(add('')).toBe(0)
-})
-
-test('empty null should return 0', () => {
-  expect(add(null)).toBe(0)
-})
-
-test('empty string with spaces should return 0', () => {
-  expect(add('    ')).toBe(0)
-})
-
-test("string of '1' should return 1", () => {
-  expect(add('1')).toBe(1)
-})
-
-test("string of '1,2' should return 3", () => {
-  expect(add('1,2')).toBe(3)
+describe.each([
+  [null  , 0, 'null should return 0'],
+  [''    , 0, 'empty string should return 0'],
+  ['    ', 0, 'empty string with spaces should return 0'],
+  ['1'   , 1, "string of '1' should return 1"],
+  ['1,2' , 3, "string of '1,2' should return 3"],
+])('.add(%s) returns %i', (input, output, description) => {
+  test(description, () => {
+    expect(add(input)).toBe(output)
+  })
 })
