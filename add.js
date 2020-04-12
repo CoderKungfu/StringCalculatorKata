@@ -21,8 +21,8 @@ const defineDelimiter = (input) => {
 const add = (numbers) => {
   if (!isValidInput(numbers)) return 0
 
-  const [defaultDelimiter, cleanedInput] = defineDelimiter(numbers)
-  const intArray = normalizeDelimiters(cleanedInput, defaultDelimiter).split(defaultDelimiter)
+  const [delimiter, cleanedInput] = defineDelimiter(numbers)
+  const intArray = normalizeDelimiters(cleanedInput, delimiter).split(delimiter)
   if (intArray.length === 1) return Number(intArray[0])
   
   const reducer = (accumulator, curentValue) => {
