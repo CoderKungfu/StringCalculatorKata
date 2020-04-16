@@ -6,7 +6,7 @@
 
 ## Contributors
 
-- @miccheng
+- [@miccheng](https://github.com/miccheng)
 
 ## License
 
