@@ -7,3 +7,7 @@
 ## Contributors
 
 - @miccheng
+
+## License
+
+MIT Lience
